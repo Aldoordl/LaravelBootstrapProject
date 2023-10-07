@@ -1,0 +1,115 @@
+:root {
+    --size: 4rem;
+    --border-w: calc(var(--size) * 0.2);
+  
+    --hue: 220;
+    --sat: 100;
+    --light: 81;
+  
+    --color: hsl(var(--hue), calc(var(--sat) * 1%), calc(var(--light) * 1%));
+  
+    --shade: hsl(
+      calc(var(--hue) - 20),
+      calc(var(--sat) * 1%),
+      calc(var(--light) * 1%)
+    );
+  }
+  
+  @keyframes borderAnimation {
+    0% {
+      border-color: var(--color);
+    }
+    100% {
+      border-color: var(--shade);
+    }
+  }
+  
+  .loader {
+    position: relative;
+  
+    width: var(--size);
+    height: var(--size);
+  
+    border-style: solid;
+    border-width: var(--border-w);
+    border-color: var(--color);
+    border-radius: var(--size);
+  
+    animation-duration: 2s;
+    animation-name: borderAnimation;
+    animation-easing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .loader:before,
+  .loader:after {
+    --w: calc(var(--border-w) * 0.9);
+    position: absolute;
+    content: "";
+    width: var(--w);
+    background: var(--color);
+    left: calc((var(--size) / 2) - (var(--w) / 2));
+    transform-origin: top center;
+    border-radius: calc(var(--border-w) * 0.6);
+  
+    top: calc(var(--size) / 2);
+  }
+  
+  @keyframes pointerAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+  
+  @keyframes pointerAnimation2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+  
+  .loader:before {
+    height: 40%;
+    top: calc(var(--size) / 2 - 1%);
+    background: var(--shade);
+  
+    transform-origin: top center;
+  
+    animation-duration: 6s;
+    animation-name: pointerAnimation;
+    animation-easing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .loader:after {
+    height: 45%;
+  
+    transform-origin: top center;
+  
+    animation-duration: 1s;
+    animation-name: pointerAnimation;
+    animation-easing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  .preloader {
+    display: flex;
+    height: 100vh;
+    widht: 100vw;
+    background: #fff;
+  
+    align-items: center;
+    justify-content: center;
+  }
+  
