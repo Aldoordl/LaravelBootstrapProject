@@ -1,9 +1,9 @@
 @extends('bootstrap.layout.app')
 
 @section('title')
-    <title>Download Resume</title>    
+    <title>Admin Dashboard</title>    
 @endsection
 
 @section('content')
-   @include('bootstrap.auth.shared.resume-view') 
+    @include('bootstrap.admin.shared.resume-view')
 @endsection

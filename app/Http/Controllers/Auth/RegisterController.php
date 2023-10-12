@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -41,7 +42,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function register(Request $request)
+    public function register(Request $request, ActivityLogController $activityLogController)
     {
         $this->validator($request->all())->validate();
 
@@ -53,6 +54,9 @@ class RegisterController extends Controller
         // Autentikasi user yang baru terdaftar
         Auth::login($user);
 
-        return redirect()->route('resume.download'); // Ganti 'home' dengan nama rute yang sesuai
+        // Catat log aktivitas pendaftaran pengguna
+        $activityLogController->logUserRegistered($user);
+
+        return redirect()->route('resume.download.page')->with('success', 'Successfully login!! Welcome to ' . config('app.name')); // Ganti 'home' dengan nama rute yang sesuai
     }
 }

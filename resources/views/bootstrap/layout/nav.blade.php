@@ -13,16 +13,25 @@
                     <li class="nav-item"><a class="nav-link {{ request()->is("project") ? 'active' : '' }}" href="{{ route('project') }}">Projects</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->is("about") ? 'active' : '' }}" href="{{ route('about') }}">About</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->is("contact") ? 'active' : '' }}" href="{{ route('contact') }}">Contact</a></li>
-                    <li class="nav-item">
-                        @auth
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="btn btn-outline-dark btn-lg px-3 py-2 ms-2 fs-6 fw-bolder" type="submit">Sign out</button>
-                            </form>
+                    
+                    @auth
+                        @if(auth()->user()->role == 'admin')
+                            <li class="nav-item">
+                                <a class="btn btn-outline-dark btn-sm px-3 py-2 ms-2 fs-7 fw-bolder" href="{{ route('admin.dashboard') }}">Admin</a>
+                            </li>
                         @else
-                            <a class="btn btn-outline-dark btn-lg px-3 py-2 ms-2 fs-6 fw-bolder" href="{{ route('login') }}">Sign in</a>
-                        @endauth
-                    </li>
+                            <li class="nav-item">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="btn btn-outline-dark btn-sm px-3 py-2 ms-2 fs-7 fw-bolder" type="submit">Sign out</button>
+                                </form>
+                            </li>
+                        @endif
+                    @else
+                        <li class="nav-item">
+                            <a class="btn btn-outline-dark btn-sm px-3 py-2 ms-2 fs-7 fw-bolder" href="{{ route('login') }}">Sign in</a>
+                        </li>
+                    @endauth
                     @endif
                 </ul>
             </div>

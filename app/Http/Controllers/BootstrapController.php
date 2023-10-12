@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BootstrapRequest;
+use App\Models\ActivityLog;
 
 class BootstrapController extends Controller
 {
@@ -38,6 +39,13 @@ class BootstrapController extends Controller
             
             // Mengatur header untuk menyertakan file yang akan diunduh
             header('Content-Disposition: attachment; filename="' . $downloadFileName . '"');
+
+            // Catat log aktivitas unduhan resume
+            ActivityLog::create([
+                'user_id' => auth()->user()->id,
+                'activity' => 'resume_download',
+                'description' => 'User ' . auth()->user()->name . ' downloaded their resume.',
+            ]);
 
             // Mengirimkan file ke browser untuk diunduh
             readfile($resumeFilePath);
