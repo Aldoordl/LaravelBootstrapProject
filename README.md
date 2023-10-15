@@ -50,12 +50,6 @@ The WebApp is compatible with devices of all sizes and all OS's, and consistent 
 ## To-do
 - Empty
 
-## Team
-
-[![Aldoordl](https://avatars.githubusercontent.com/u/115862018?v=4)](https://github.com/Aldoordl)  |
----|---
-[Aldoordl](https://github.com/Aldoordl) |
-
 ## [License]()
 
 Copyright © [Aldoordl](https://github.com/Aldoordl)
