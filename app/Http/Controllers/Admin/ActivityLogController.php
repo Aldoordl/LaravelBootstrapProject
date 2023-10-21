@@ -17,6 +17,10 @@ class ActivityLogController extends Controller
         // Mendapatkan semua log aktivitas yang ada
         $activityLogs = ActivityLog::latest()->get();
 
+        if ($activityLogs->isEmpty()) {
+            return redirect()->route('admin.dashboard')->with('error', 'Error: Log is empty. There are no logs to download.');
+        }
+        
         // Menyimpan log ke dalam file teks
         $logContent = '';
         foreach ($activityLogs as $log) {

@@ -36,10 +36,10 @@ class LoginController extends Controller
 
             if ($user->role === 'admin') {
                 // Pengguna memiliki peran admin, arahkan ke dashboard admin
-                return redirect()->route('admin.dashboard')->with('success', 'Successfully login!! Welcome Admin ' . config('app.name'));
+                return $this->onlineAndRedirect($user, route('admin.dashboard'), 'Admin');
             } else {
                 // Pengguna biasa, arahkan ke halaman download
-                return redirect()->route('resume.download.page')->with('success', 'Successfully login!! Welcome to ' . config('app.name'));
+                return $this->onlineAndRedirect($user, route('resume.download.page'), 'User');
             }
         } else {
             // Autentikasi gagal, tampilkan pesan error
@@ -48,5 +48,15 @@ class LoginController extends Controller
                 'password' => 'The password field is required.',
             ]);
         }
+    }
+
+    protected function onlineAndRedirect($user, $route, $role)
+    {
+        // Atur status pengguna menjadi "Online"
+        $user->status = true;
+        $user->save();
+
+        // Redirect ke halaman yang sesuai dengan peran
+        return redirect($route)->with('success', 'Successfully login!! Welcome ' . $role . ' ' . config('app.name'));
     }
 }

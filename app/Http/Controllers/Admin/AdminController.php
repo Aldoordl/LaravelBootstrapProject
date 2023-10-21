@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ActivityLog;
+use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -25,14 +26,6 @@ class AdminController extends Controller
 
     public function resume(){
         return view('bootstrap.admin.resume');
-    }
-
-    public function project(){
-        return view('bootstrap.admin.project');
-    }
-
-    public function reports(){
-        return view('bootstrap.admin.report');
     }
 
     public function updateRole(Request $request)
@@ -58,7 +51,7 @@ class AdminController extends Controller
         if (auth()->check() && auth()->user()->id === $user->id && $role == 'user') {
             // Jika pengguna mencoba mengubah dirinya sendiri menjadi "user", beri pesan error
             throw ValidationException::withMessages([
-                'role' => 'You cannot change your own role to User.',
+                'role' => 'Error: You cannot change your own role to User.',
             ]);
         }
 
@@ -78,9 +71,9 @@ class AdminController extends Controller
 
         // Tentukan pesan berdasarkan peran yang diubah
         if ($role == 'admin') {
-            $message = 'Role changed to Admin for ' . $user->email;
+            $message = 'Success: Role changed to Admin for ' . $user->email;
         } else {
-            $message = 'Role changed to User for ' . $user->email;
+            $message = 'Success: Role changed to User for ' . $user->email;
         }
 
         // Kirim pesan sukses ke view
@@ -94,12 +87,12 @@ class AdminController extends Controller
 
         // Periksa apakah akun ditemukan
         if (!$user) {
-            return redirect()->back()->with('error', 'Account not found.');
+            return redirect()->back()->with('error', 'Error: Account not found.');
         }
 
         // Periksa apakah akun yang sedang login adalah admin
         if (auth()->user()->id === $user->id && $user->isAdmin()) {
-            return redirect()->back()->with('error', 'You cannot delete your own admin account.');
+            return redirect()->back()->with('error', 'Error: You cannot delete your own admin account.');
         }
 
         // Hapus akun
@@ -109,6 +102,6 @@ class AdminController extends Controller
         $activityLogController->logUserDeleted($user);
         
         // Redirect kembali ke halaman dengan pesan sukses
-        return redirect()->back()->with('success', 'Account successfully deleted.');
+        return redirect()->back()->with('success', 'Success: Account successfully deleted.');
     }
 }

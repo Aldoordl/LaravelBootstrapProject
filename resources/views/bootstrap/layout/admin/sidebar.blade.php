@@ -18,13 +18,13 @@
                 </a>
             </li>
             <li class="nav-item mb-3">
-                <a class="nav-link" href="{{ route('admin.project') }}">
+                <a class="nav-link" href="{{ route('admin.projects.index') }}">
                     Project
                 </a>
             </li>
             <li class="nav-item mb-4">
                 <a class="nav-link" href="{{ route('admin.reports') }}">
-                    Reports
+                    Report
                 </a>
             </li>
             <li class="nav-item mb-3">

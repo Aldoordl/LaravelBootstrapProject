@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BootstrapRequest;
 use App\Models\ActivityLog;
+use App\Models\Message;
+use App\Models\Project;
 
 class BootstrapController extends Controller
 {
@@ -56,7 +58,9 @@ class BootstrapController extends Controller
     }
 
     public function project(){
-        return view('bootstrap.page.project');
+        $projects = Project::all();
+        
+        return view('bootstrap.page.project', compact('projects'));
     }
 
     public function about(){
@@ -69,6 +73,13 @@ class BootstrapController extends Controller
         $nama = $request->input('name');
         $email = $request->input('email');
         $pesan = $request->input('message');
+
+        // Simpan pesan ke dalam basis data
+        Message::create([
+            'nama' => $nama,
+            'email' => $email,
+            'pesan' => $pesan,
+        ]);
 
         // Pesan sukses
         $successMessage = "Form submitted successfully!";

@@ -34,7 +34,7 @@
                         </div>
                         <!-- Content Here -->
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header bg-white fw-bolder">
                                         Set Admin
@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header bg-white fw-bolder">
                                         User List
@@ -79,17 +79,18 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- Daftar Pengguna dan Tombol Delete -->
                         <div class="row mt-5">
                             <div class="col-md-12">
-                                <h3 class="fw-bolder pb-2 border-bottom">User Accounts</h3>
+                                <h3 class="fw-bolder border-bottom pb-2"><span class="text-gradient d-inline">User Accounts</span></h3>
                                 <table class="table">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
                                             <th>Email</th>
+                                            <th>Role</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -104,6 +105,13 @@
                                                         Admin
                                                     @else
                                                         User
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($user->status)
+                                                        <span class="text-success">Online</span>
+                                                    @else
+                                                        <span class="text-danger">Offline</span>
                                                     @endif
                                                 </td>
                                                 <td>

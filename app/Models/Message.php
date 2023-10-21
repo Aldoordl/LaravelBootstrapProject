@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Message extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image', 'description'];
+    protected $fillable = ['nama', 'email', 'pesan']; // Sesuaikan dengan nama kolom pada tabel basis data
 }

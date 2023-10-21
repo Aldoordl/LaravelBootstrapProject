@@ -24,7 +24,7 @@
                                 @csrf
                                 <!-- Name input -->
                                 <div class="form-floating mb-3">
-                                    <input class="form-control @error('name') is-invalid @enderror" id="name" name="name" type="text" placeholder=" " value="{{ old('name') }}" />
+                                    <input class="form-control" id="name" name="name" type="text" placeholder="Name" value="{{ auth()->check() ? auth()->user()->name : 'Guest' }}" />
                                     <label for="name">Name</label>
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -34,7 +34,7 @@
                                 </div>
                                 <!-- Email address input -->
                                 <div class="form-floating mb-3">
-                                    <input class="form-control @error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder=" " value="{{ old('email') }}" />
+                                    <input class="form-control" id="email" name="email" type="email" placeholder="Email address" value="{{ auth()->check() ? auth()->user()->email : 'guest@example.com' }}" />
                                     <label for="email">Email address</label>
                                     @error('email')
                                         <div class="invalid-feedback">

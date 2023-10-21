@@ -25,7 +25,7 @@
                         <!-- Content Here -->
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="card shadow">
+                                <div class="card">
                                     <div class="card-header bg-white fw-bolder">
                                         Recent Contents
                                     </div>
@@ -36,12 +36,14 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="card shadow">
+                                <div class="card">
                                     <div class="card-header bg-white fw-bolder">
                                         Statistics
                                     </div>
                                     <div class="card-body bg-light">
                                         <!-- Content for sales statistics -->
+                                        DELETE FROM nama_table; <br>
+                                        php artisan migrate:refresh
                                     </div>
                                 </div>
                             </div>
