@@ -17,7 +17,7 @@ Here is a working live demo :  Empty
 
 ### Admin View Page
 Here is the landing page:
-# ![]((https://github.com/Aldoordl/LaravelBootstrapProject/assets/115862018/ddf6b0b6-7e86-4da4-a333-bd25406ef294))
+# ![AldooFolio]((https://github.com/Aldoordl/LaravelBootstrapProject/assets/115862018/ddf6b0b6-7e86-4da4-a333-bd25406ef294))
 ## Mobile support
 The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements are being made.
 
