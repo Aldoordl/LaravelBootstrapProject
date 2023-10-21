@@ -81,6 +81,13 @@ class BootstrapController extends Controller
             'pesan' => $pesan,
         ]);
 
+        // Catat aktivitas pengiriman pesan
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'activity' => 'message_sent',
+            'description' => 'User ' . auth()->user()->name . ' sent a message.',
+        ]);
+
         // Pesan sukses
         $successMessage = "Form submitted successfully!";
 

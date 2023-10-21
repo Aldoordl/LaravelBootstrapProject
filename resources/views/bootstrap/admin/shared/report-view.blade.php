@@ -32,23 +32,31 @@
                                         <th>Message</th>
                                         <th>Action</th> <!-- Kolom baru untuk tombol Hapus -->
                                     </tr>
-                                    @foreach($messages as $message)
+                                    @if ($messages->isEmpty())
                                         <tr>
-                                            <td>{{ $message->nama }}</td>
-                                            <td>{{ $message->email }}</td>
-                                            <td>{{ $message->pesan }}</td>
-                                            <td>
-                                                <form action="{{ route('admin.reports.delete', ['id' => $message->id]) }}" method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                                </form>
-                                            </td>
+                                            <td class="text-center" colspan="4">No messages were sent.</td>
                                         </tr>
-                                    @endforeach
+                                    @else
+                                        @foreach($messages as $message)
+                                            <tr>
+                                                <td>{{ $message->nama }}</td>
+                                                <td>{{ $message->email }}</td>
+                                                <td>{{ $message->pesan }}</td>
+                                                <td>
+                                                    <form action="{{ route('admin.reports.delete', ['id' => $message->id]) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </table>
+                                {{-- <a href="{{ route('admin.reports.reset') }}" class="btn btn-outline-danger btn-sm mt-3 float-end">Reset</a> --}}
                             </div>
                         </div>
+                        
                     </main>
                 </div>
             </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ActivityLogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\TablesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -28,20 +29,27 @@ use Illuminate\Support\Facades\Route;
 
 // route web
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
+    // Main Route
     Route::get('', [AdminController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
-    Route::get('/profile/user', [AdminController::class, 'profileUser'])->name('profile.user');
-    Route::get('/resume', [AdminController::class, 'resume'])->name('resume');
-    
-    Route::get('/reports', [ReportController::class, 'reports'])->name('reports');
-    Route::delete('/message/{id}', [ReportController::class, 'delete'])->name('reports.delete');
 
-    Route::post('/update-role', [AdminController::class, 'updateRole'])->name('updateRole');
-    Route::delete('/delete/{id}', [AdminController::class, 'deleteUser'])->name('delete');
-    
-    // Unduh log aktivitas
-    Route::get('/download-log', [ActivityLogController::class, 'downloadLog'])->name('download-log');
-    
+    // Log activity
+    Route::get('/log/download', [ActivityLogController::class, 'downloadLog'])->name('download-log');
+
+    // Reset Option
+    Route::post('/reset', [TablesController::class, 'resetTables'])->name('reset.tables');
+
+    // Profile
+    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
+    Route::post('/profile/role/update', [AdminController::class, 'updateRole'])->name('updateRole');
+    Route::delete('/profile/delete/{id}', [AdminController::class, 'deleteUser'])->name('delete');
+
     // Project logic
     Route::resource('projects', ProjectController::class);
+
+    // Resume
+    Route::get('/resume', [AdminController::class, 'resume'])->name('resume');
+    
+    // Reports
+    Route::get('/reports', [ReportController::class, 'reports'])->name('reports');
+    Route::delete('/reports/message/{id}', [ReportController::class, 'delete'])->name('reports.delete');
 });

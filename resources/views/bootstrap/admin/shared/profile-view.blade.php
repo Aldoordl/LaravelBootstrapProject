@@ -37,7 +37,7 @@
                             <div class="col-md-12">
                                 <div class="card">
                                     <div class="card-header bg-white fw-bolder">
-                                        Set Admin
+                                        Administrator
                                     </div>
                                     <div class="card-body bg-light">
                                         <!-- Form untuk mengubah peran pengguna -->
@@ -82,9 +82,8 @@
                             </div> --}}
                         </div>
                         <!-- Daftar Pengguna dan Tombol Delete -->
-                        <div class="row mt-5">
+                        <div class="row mt-4">
                             <div class="col-md-12">
-                                <h3 class="fw-bolder border-bottom pb-2"><span class="text-gradient d-inline">User Accounts</span></h3>
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -118,7 +117,7 @@
                                                     <form method="POST" action="{{ route('admin.delete', $user->id) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
                                                     </form>
                                                 </td>
                                             </tr>

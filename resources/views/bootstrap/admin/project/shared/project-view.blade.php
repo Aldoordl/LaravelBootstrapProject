@@ -37,7 +37,7 @@
                         @else
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                                 <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Project</span></h2>
-                                <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Create Project</a>
+                                <a class="btn btn-outline-primary" href="{{ route('admin.projects.create') }}">Create Project</a>
                             </div>
                             <!-- Content Here -->
                             <ul class="list-group">
