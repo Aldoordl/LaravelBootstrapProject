@@ -10,7 +10,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif
-
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="container-fluid">
                 <div class="row">
                     <!-- Sidebar -->
@@ -25,18 +29,25 @@
                         <!-- Content Here -->
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <table class="table">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Message</th>
-                                        <th>Action</th> <!-- Kolom baru untuk tombol Hapus -->
-                                    </tr>
-                                    @if ($messages->isEmpty())
-                                        <tr>
-                                            <td class="text-center" colspan="4">No messages were sent.</td>
-                                        </tr>
+                                @if ($messages->isEmpty())
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="d-flex align-items-center">
+                                                <div class="p-5">
+                                                    <h2 class="fw-bolder">Something's not right!</h2>
+                                                    <p>No messages were sent.</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                     @else
+                                        <table class="table">
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Message</th>
+                                                <th>Action</th> <!-- Kolom baru untuk tombol Hapus -->
+                                            </tr>
                                         @foreach($messages as $message)
                                             <tr>
                                                 <td>{{ $message->nama }}</td>

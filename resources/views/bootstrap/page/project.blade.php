@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-   @include('bootstrap.shared.project-view') 
+   @include('bootstrap.page.shared.project-view') 
 @endsection

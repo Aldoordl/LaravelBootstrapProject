@@ -25,7 +25,8 @@ class AdminController extends Controller
     }
 
     public function resume(){
-        return view('bootstrap.admin.resume');
+        return redirect()->back()->with('error', '403 | Belum Jadi Bang 😁');
+        // return view('bootstrap.admin.resume');
     }
 
     public function updateRole(Request $request)

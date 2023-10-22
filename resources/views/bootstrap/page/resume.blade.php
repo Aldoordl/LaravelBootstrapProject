@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-   @include('bootstrap.shared.resume-view') 
+   @include('bootstrap.page.shared.resume-view') 
 @endsection

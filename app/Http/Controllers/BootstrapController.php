@@ -82,10 +82,16 @@ class BootstrapController extends Controller
         ]);
 
         // Catat aktivitas pengiriman pesan
+        if (auth()->check()) {
+            $userName = auth()->user()->name;
+        } else {
+            $userName = 'unknown';
+        }
+
         ActivityLog::create([
             'user_id' => auth()->id(),
             'activity' => 'message_sent',
-            'description' => 'User ' . auth()->user()->name . ' sent a message.',
+            'description' => 'User ' . $userName . ' sent a message.',
         ]);
 
         // Pesan sukses

@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="image">Image</label>
-                            <input type="file" class="form-control" id="image" name="image">
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
                         </div>
                         <div class="form-floating mb-3">
                             <textarea class="form-control" id="description" name="description" rows="4" placeholder=" " style="height: 10rem; resize: none;" required>{{ old('description', $project->description) }}</textarea>

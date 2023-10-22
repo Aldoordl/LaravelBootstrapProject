@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-   @include('bootstrap.shared.submit-view') 
+   @include('bootstrap.page.shared.submit-view') 
 @endsection

@@ -11,5 +11,5 @@
 @endsection
 
 @section('content')
-   @include('bootstrap.shared.head-view') 
+   @include('bootstrap.page.shared.head-view') 
 @endsection

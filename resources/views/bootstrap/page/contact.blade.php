@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-   @include('bootstrap.shared.contact-view') 
+   @include('bootstrap.page.shared.contact-view') 
 @endsection
